@@ -11,14 +11,10 @@ void setup_console();
 int gifts(char map[][107], int HEIGHT, int WIDTH);
 int cout_map(char map[][107], int HEIGHT, int WIDTH);
 void start_player(int playerX, int playerY, string player1, string player2);
-void move_down(char map[][107], int& playerX, int& playerY, const string& player1, const string& player2);
-void move_up(char map[][107], int& playerX, int& playerY, const string& player1, const string& player2);
-void move_left(char map[][107], int& playerX, int& playerY, const string& player1, const string& player2);
-void move_right(char map[][107], int& playerX, int& playerY, const string& player1, const string& player2);
-
-
-
-
+void move_down(char map[][107], int& playerX, int& playerY, const string player1, const string player2);
+void move_up(char map[][107], int& playerX, int& playerY, const string player1, const string player2);
+void move_left(char map[][107], int& playerX, int& playerY, const string player1, const string player2);
+void move_right(char map[][107], int& playerX, int& playerY, const string player1, const string player2);
 
 
 void gotoxy(int x, int y) {                                   // <summary> Эта функция перемещает курсор в заданную позицию х у </summary> 
@@ -32,10 +28,8 @@ void setup_console()                                             // <summary> К
     srand(time(0));                                              // подключили рандом
     HWND consoleWindow = GetConsoleWindow();                     // Получаем дескриптор окна консоли     
 
-
     int screenWidth = GetSystemMetrics(SM_CXSCREEN);             // <summary> Получаем разрешение экрана </summary>
     int screenHeight = GetSystemMetrics(SM_CYSCREEN);            // <param name> Размеры по оси х или y;
-
 
     RECT r;                                                      // Магическим образом, путём заклинания CTRL + С - CTRL + V (порядок очень важен), Получаем размеры окна консоли.
     GetWindowRect(consoleWindow, &r);
@@ -46,12 +40,8 @@ void setup_console()                                             // <summary> К
     int x = (screenWidth - width) / 2 + 60;
     int y = (screenHeight - height) / 2 - 150;
 
-
-
     MoveWindow(consoleWindow, x, y, width, height, TRUE);        // <summary> И размещаем его по центру экрана 15,6 </summary>
     // <param names> дескриптор окна, новые координаты окна консоли по х у, новые размеры окна, если TRUE, то перерисовываем.
-
-
 
     system("mode con cols=107 lines=49");                        // <summary> Функция изменяет размеры консоли</summary>
     // <param name> размеры консольного окна на 107 столбцов и 49 строк </param name>
@@ -168,12 +158,7 @@ void move_right(char map[][107], int& playerX, int& playerY, const string& playe
     }
 }
 
-
-
-
 int main()                                                                           // <summary> Даже не знаю зачем здесь это </summary>
-
-
 {
     int playerX = 55;
     int playerY = 43;
@@ -187,24 +172,9 @@ int main()                                                                      
 
     setup_console();
 
-
-
-
-
-
     enum direction { DOWN = 80, UP = 72, LEFT = 75, RIGHT = 77 };                    // сьём значений с клавиатуры, вернее задаём соответствия
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(h, 33);                                                  // меняем цвета фона и текста
-
-
-
-
-
-
-
-
-
-
 
     char map[HEIGHT][WIDTH] = {                                                      // наверное это карта
         {"##########################################################################################################"},
@@ -260,8 +230,6 @@ int main()                                                                      
 
     cout_map(map, HEIGHT, WIDTH);
 
-
-
     while (true) {
 
         start_player(playerX, playerY, player1, player2);
@@ -293,10 +261,6 @@ int main()                                                                      
 
     }
 
-
     return 0;
-
-
-
 
 }
