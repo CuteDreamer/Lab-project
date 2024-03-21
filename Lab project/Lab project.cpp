@@ -20,13 +20,13 @@ void hideCursor();
 
 
 
-enum direction { DOWN = 80, UP = 72, LEFT = 75, RIGHT = 77 };
+enum direction { DOWN = 80, UP = 72, LEFT = 75, RIGHT = 77 };            // задаём соответствия нажатиям клавиш
 
-enum color { green = 33, white = 39, black = 32 };
+enum color { green = 33, white = 39, black = 32 };                       // задаём соответствия цветам
 
 
 
-void ChangeColor(color color)
+void ChangeColor(color color)                                           // <summary> функция для замены цвета </summary>
 {
     HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(consoleHandle, color);
@@ -115,7 +115,7 @@ int cout_map(char map[][107], int HEIGHT, int WIDTH)             // <summary> О
 
 void start_player(int playerX, int playerY, string player1, string player2)    // <summary> Функция размещает игрока на стартовую позицию </summary>
 {   
-    ChangeColor(color::white);                                                                          // <param names> координаты игрока по х , у и две строки, которыми отрисовывается персонаж </param names>
+    ChangeColor(color::white);                                                 // <param names> координаты игрока по х , у и две строки, которыми отрисовывается персонаж </param names>
     gotoxy(playerX, playerY);
     cout << player1;
     gotoxy(playerX, playerY + 1);
@@ -123,8 +123,8 @@ void start_player(int playerX, int playerY, string player1, string player2)    /
     ChangeColor(color::green);
 }
 
-void harvest(char map[][107], int *playerY, int *playerX, int *count)
-{
+void harvest(char map[][107], int *playerY, int *playerX, int *count)         // <summary> Функция отвечает за счёт гифтов </summary>
+{                                                                             // <param names> передаём массив, указатели на координаты х и у и указатель на счётчик </param names>
     if (map[*playerY][*playerX] == '7') {
         map[*playerY][*playerX] = ' ';
         *count += 1;
@@ -154,7 +154,7 @@ void harvest(char map[][107], int *playerY, int *playerX, int *count)
 
 void move_down(char map[][107], int& playerX, int& playerY, const string player1, const string player2, int* p_count)    // <summary> Функция отвечает за движение вниз </summary>                                                                                                          
 {          
-                                                                                            // <param names> передаём массив, передаём оригиналы координат х и у, передаём персонажа </param names>
+                                                          // <param names> передаём массив, передаём оригиналы координат х и у, передаём персонажа </param names>
     if (map[playerY + 2][playerX] != '#' && map[playerY + 2][playerX + 1] != '#' && map[playerY + 2][playerX + 2] != '#') {
 
 
@@ -164,7 +164,7 @@ void move_down(char map[][107], int& playerX, int& playerY, const string player1
         gotoxy(playerX, playerY + 1);                     // стираем предыдущее положение
         cout << "   ";
 
-        playerY++;        // Обновляем координаты
+        playerY++;                                        // Обновляем координаты
 
         gotoxy(playerX, playerY);
         cout << player1;
