@@ -15,6 +15,7 @@ void move_down(char map[][107], int& playerX, int& playerY, const string player1
 void move_up(char map[][107], int& playerX, int& playerY, const string player1, const string player2, int *p_count);
 void move_left(char map[][107], int& playerX, int& playerY, const string player1, const string player2, int* p_count);
 void move_right(char map[][107], int& playerX, int& playerY, const string player1, const string player2, int* p_count);
+void harvest(char map[][107], int *playerY, int *playerX, int *count);
 void hideCursor();
 
 
