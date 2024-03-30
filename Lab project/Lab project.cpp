@@ -2,9 +2,9 @@
 #include <ctime>
 #include <windows.h>
 #include <conio.h>
-#include <string>
+#include "Header.h"
 
-using namespace std;
+
 
 void gotoxy(int x, int y);
 void setup_console();
@@ -17,13 +17,6 @@ void move_left(char map[][107], int& playerX, int& playerY, const string player1
 void move_right(char map[][107], int& playerX, int& playerY, const string player1, const string player2, int* p_count);
 void harvest(char map[][107], int *playerY, int *playerX, int *count);
 void hideCursor();
-
-
-
-
-enum direction { DOWN = 80, UP = 72, LEFT = 75, RIGHT = 77 };            // задаём соответствия нажатиям клавиш
-
-enum color { green = 33, white = 39, black = 32 };                       // задаём соответствия цветам
 
 
 
